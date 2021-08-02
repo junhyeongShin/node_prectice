@@ -1,0 +1,11 @@
+{
+  "name": "new_node",
+  "version": "1.0.0",
+  "description": "assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd build/src && node ."
+  },
+  "author": "",
+  "license": "ISC"
+}

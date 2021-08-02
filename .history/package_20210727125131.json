@@ -1,0 +1,20 @@
+{
+  "name": "new_node",
+  "version": "1.0.0",
+  "description": "assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd build/src && node .",
+    "prestart": "tsc"
+    // ,    "localServerRun": "cd src && nodemon --exec ts-node index.ts --delays 2 "
+
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "dotenv": "^8.2.0",
+    "helmet": "^4.1.1",
+
+  }
+}
