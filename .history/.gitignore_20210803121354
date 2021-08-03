@@ -1,7 +1,0 @@
-/node_modules
-/src/logs
-.env
-.env.dev
-.env.product
-.env.
-package-lock.json
