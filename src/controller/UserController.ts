@@ -1,14 +1,18 @@
 import express from 'express';
+import { user } from '../model/user';
+import moment from 'moment';
 
 
-export const user_controller = express.Router();
+
+
+export const UserController = express.Router();
 
 // 접속 테스용
-user_controller.get('/test', async (req, res) => {
+UserController.get('/test', async (req, res) => {
   res.status(200).json()
 })
 
-user_controller.get('/user/:name', (req, res) => {
+UserController.get('/user/:name',(req, res) => {
   res.json({ name: req.params.name });
 });
 

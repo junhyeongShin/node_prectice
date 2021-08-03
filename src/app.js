@@ -6,13 +6,10 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 // import moment from 'moment-timezone';
 import cors from 'cors';
-import {router} from './controller/router.js';
 import expressSession from 'express-session';
-import path from 'path';
-import mongoose from 'mongoose';
-
-// const db = require('./db.js'); // db 불러오기
-// import { stream } from './winston';
+// import path from 'path';
+import { stream } from './winston.js';
+import winston from 'winston';
 
 
 // 내가 커스텀해서 사용할 에러 핸들러
@@ -25,32 +22,20 @@ import mongoose from 'mongoose';
 
 const app = express();
 
+
 // body-parser 대신 사용해도 json 가져올수잇음.  
 // express 4.16 버진 이후
 app.use(express.json());
-console.log("express.json()")
 
 // 객체 형태의 데이터 안에 객체 데이터 형태 사용 가능
 app.use(express.urlencoded({ extended: true }));
-console.log("express.urlencoded()")
-
 
 // 쿠키 사용 페키지
 app.use(cookieParser());
-console.log("cookieParser()")
 
 // 서버 시간 설정
 // moment.tz.setDefault('Asia/Seoul');
 
-// dotenv.config({
-//     path: path.resolve(
-//       process.cwd(),
-//       process.env.NODE_ENV == "production" ? ".env.dev" : ".env"
-//     ),
-//   });
-
-// console.log(process.env.DB_URL);
-// console.log("dotenv.config()")
 
 
 
@@ -58,36 +43,15 @@ console.log("cookieParser()")
 
 // 헬멧을 사용
 app.use(helmet());
-console.log("helmet()")
-
 
 // cors 정책
 app.use(cors());
-console.log("cors()")
-
 
 app.options('/', cors());
-console.log("options()")
-
 
 // 에러관련 미들웨어 설정
 // app.use(errorMiddleware)
-
-
-
-app.use('/', router);
-console.log("router / ");
-//   function connect() {
-//     mongoose.connect('localhost:27017', function(err) {
-//       if (err) {
-//         console.error('mongodb connection error', err);
-//       }
-//       console.log('mongodb connected');
-//     });
-//   }
-  mongoose.connect('mongodb://127.0.0.1:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false', { dbName: 'shakerr' }, function(err) {});
-
-
+app.use(morgan('combined', {stream: winston.stream}));
 
 
 app.use((req, res, next) => {
@@ -95,7 +59,8 @@ app.use((req, res, next) => {
     next();
 })
 
-console.log("use()");
-
+app.listen(3000, () => {
+    console.log('Server listening on port 3000');
+});
 
 export default app

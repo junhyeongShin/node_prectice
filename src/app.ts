@@ -8,7 +8,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import expressSession from 'express-session';
 // import path from 'path';
-// import { stream } from './winston';
+import { stream } from './winston';
+import winston from 'winston';
 
 
 // 내가 커스텀해서 사용할 에러 핸들러
@@ -49,6 +50,7 @@ app.options('/', cors());
 
 // 에러관련 미들웨어 설정
 // app.use(errorMiddleware)
+app.use(morgan('combined', {stream: winston.stream}));
 
 
 app.use((req, res, next) => {
