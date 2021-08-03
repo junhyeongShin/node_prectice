@@ -1,7 +1,4 @@
-# 모듈 #
 /node_modules
-
-# 로그 #
 /src/logs
 
 # env 파일들 #
@@ -10,7 +7,5 @@
 .env.prod
 .env.test
 # 로컬 기록 #
-/history
-
-
+.history/
 package-lock.json

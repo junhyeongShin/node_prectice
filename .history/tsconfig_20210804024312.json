@@ -1,0 +1,11 @@
+{
+  "compilerOptions":{
+    "target":"es6",
+    "module":"es6",
+    "outDir":"./build/src", //컴파일 경로 지정
+    "rootDir":"./src",
+    "strict": true,
+    "moduleResolution":"node",
+    "esModuleInterop":true
+   }
+}

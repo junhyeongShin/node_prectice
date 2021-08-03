@@ -10,7 +10,7 @@
 .env.prod
 .env.test
 # 로컬 기록 #
-/history
+.history/
 
 
 package-lock.json
